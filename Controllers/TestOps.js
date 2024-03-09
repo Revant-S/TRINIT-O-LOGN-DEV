@@ -216,3 +216,22 @@ module.exports.AddAnalytics = async (req, res) => {
     res.status(500).json({ success: false, error: "Internal Server Error" });
   }
 };
+
+
+module.exports.getAnalysis = async (req, res) => {
+  try {
+    const token = req.cookies.jwt;
+    const decodedToken = jwt.decode(token, secret);
+    const userId = decodedToken.id;
+    const { testId } = req.params;
+    const analyticsData = await Analytics.findOne({ userId, testId });
+    if (!analyticsData) {
+      return res.status(404).json({ success: false, error: 'Analytics data not found' });
+    }
+
+    res.json({ success: true, data: analyticsData });
+  } catch (error) {
+    console.error('Error getting analytics data:', error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
+}
