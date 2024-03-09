@@ -146,9 +146,9 @@ module.exports.upVotes = async (req, res) => {
   }
 };
 
-module.exports.comment =  async (req, res) => {
+module.exports.comment = async (req, res) => {
   const { testId } = req.body;
-  const {text} = req.body;
+  const { text } = req.body;
   const token = req.cookies.jwt;
   const decodedToken = jwt.decode(token, secret);
   const userId = decodedToken.id;
@@ -156,14 +156,63 @@ module.exports.comment =  async (req, res) => {
   try {
     const test = await Test.findById(testId);
     if (!test) {
-      return res.status(404).json({ error: 'Test not found' });
+      return res.status(404).json({ error: "Test not found" });
     }
     test.comments.push({ userId, text });
     await test.save();
 
-    return res.status(201).json({ message: 'Comment added successfully', test });
+    return res
+      .status(201)
+      .json({ message: "Comment added successfully", test });
   } catch (error) {
-    return res.status(500).json({ error: `Error adding comment: ${error.message}` });
+    return res
+      .status(500)
+      .json({ error: `Error adding comment: ${error.message}` });
   }
-}
+};
 
+module.exports.AddAnalytics = async (req, res) => {
+  try {
+    const {
+      userId,
+      testId,
+      marksScored,
+      totalMarks,
+      percentage,
+      rank,
+      totalTimeTaken,
+      totalTimeAllocated,
+      numQuestionsAttempted,
+      unattemptedQuestions,
+      incorrectAttempts,
+      correctAttempts,
+    } = req.body;
+    const analyticsEntry = await Analytics.create({
+      userId,
+      testId,
+      marksScored,
+      totalMarks,
+      percentage,
+      rank,
+      totalTimeTaken,
+      totalTimeAllocated,
+      numQuestionsAttempted,
+      unattemptedQuestions,
+      incorrectAttempts,
+      correctAttempts,
+    });
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ success: false, error: "User not found" });
+    }
+    user.takenTests.push(testId);
+    user.eligibleTests = user.eligibleTests.filter(
+      (eligibleTestId) => eligibleTestId.toString() !== testId.toString()
+    );
+    const updatedUser = await user.save();
+    res.json({ success: true, data: { analyticsEntry, updatedUser } });
+  } catch (error) {
+    console.error("Error adding analytics and updating user:", error);
+    res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
+};

@@ -7,4 +7,5 @@ router.get("/mytests", testOps.getTests);
 router.get("/:testId", testOps.getParticularTest);
 router.post("/upvote" , testOps.upVotes);
 router.post("/comment" , testOps.comment);
+router.post("/uploadAnalyrics" , testOps.AddAnalytics);
 module.exports = router;

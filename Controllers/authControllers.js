@@ -51,7 +51,7 @@ module.exports.signup = async (req, res) => {
   try {
     const user = await User.create(UserDetail);
     const token = tokenize(user._id);
-    res.cookie("jwt", token, { httpOnly: true });
+    res.cookie("jwt", token, { httpOnly: true, Samesite : 'None' });
     const p = await addPublicTestsToUser(user._id);
     console.log(p);
     res.json({ msg: "You Are Sucessfully Registered" });
