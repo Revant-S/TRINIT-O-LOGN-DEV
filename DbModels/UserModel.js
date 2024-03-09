@@ -53,6 +53,11 @@ const UserSchema = new mongoose.Schema({
     eligibleTests: {
         type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Test' }],
         default: [],
+    },
+    upvotedTests : {
+        type : [mongoose.Schema.Types.ObjectId],
+        ref : "Test",
+        default : []
     }
 });
 

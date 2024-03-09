@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Test = require("../DbModels/TestPaperModel");
 const User = require("../DbModels/UserModel");
-const {secret} = require("../Controllers/authControllers");
+const { secret } = require("../Controllers/authControllers");
 const jwt = require("jsonwebtoken");
 const cookie = require("cookies");
 const cookieParser = require("cookie-parser");
@@ -20,7 +20,8 @@ async function isUserAuthorized(userId, testId) {
     if (!user) {
       throw Error("User not found");
     }
-    const isAuthorized = user.takenTests.includes(testId) || user.eligibleTests.includes(testId);
+    const isAuthorized =
+      user.takenTests.includes(testId) || user.eligibleTests.includes(testId);
     return isAuthorized;
   } catch (error) {
     console.error("Error checking user authorization:", error);
@@ -31,11 +32,19 @@ async function isUserAuthorized(userId, testId) {
 module.exports.createTest = async (req, res) => {
   const body = req.body;
   let resObj = {};
+  const token = req.cookies.jwt;
+  const decodedToken = jwt.verify(token, secret);
+  const userId = decodedToken.id;
   try {
     const document = await Test.create(body);
     if (document.access === "Public") {
       const given = await giveTestToAll(document);
       resObj = given;
+    } else {
+      await User.updateOne(
+        { _id: userId },
+        { $addToSet: { eligibleTests: document._id } }
+      );
     }
     resObj.testStatus = "Test Made Sucessfully!";
     res.json({ resObj });
@@ -70,8 +79,7 @@ module.exports.getTests = async (req, res) => {
   }
 };
 
-
-module.exports.getParticularTest =  async (req, res) => {
+module.exports.getParticularTest = async (req, res) => {
   try {
     const testId = req.params.testId;
     if (!mongoose.Types.ObjectId.isValid(testId)) {
@@ -98,4 +106,64 @@ module.exports.getParticularTest =  async (req, res) => {
   }
 };
 
+module.exports.upVotes = async (req, res) => {
+  try {
+    const token = req.cookies.jwt;
+    const decodedToken = jwt.decode(token, secret);
+    const userId = decodedToken.id;
+    const response = req.body.response;
+    const testId = req.body.testId;
+    const user = await User.findById(userId);
+    if (user.upvotedTests.includes(testId)) {
+      return res
+        .status(400)
+        .json({ error: "You've already voted on this test." });
+    }
+    let updateField;
+    if (response === "upvote") {
+      updateField = {
+        $inc: { upvotes: 1 },
+        $addToSet: { upvotedTests: testId },
+      };
+    } else if (response === "downvote") {
+      updateField = { $inc: { downvotes: 1 } };
+    } else {
+      return res
+        .status(400)
+        .json({ error: "Invalid response. Use 'upvote' or 'downvote'." });
+    }
+    const updatedTest = await Test.findByIdAndUpdate(testId, updateField, {
+      new: true,
+    });
+    await User.findByIdAndUpdate(userId, {
+      $addToSet: { upvotedTests: testId },
+    });
+
+    res.json({ message: "Vote recorded successfully", updatedTest });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+module.exports.comment =  async (req, res) => {
+  const { testId } = req.body;
+  const {text} = req.body;
+  const token = req.cookies.jwt;
+  const decodedToken = jwt.decode(token, secret);
+  const userId = decodedToken.id;
+
+  try {
+    const test = await Test.findById(testId);
+    if (!test) {
+      return res.status(404).json({ error: 'Test not found' });
+    }
+    test.comments.push({ userId, text });
+    await test.save();
+
+    return res.status(201).json({ message: 'Comment added successfully', test });
+  } catch (error) {
+    return res.status(500).json({ error: `Error adding comment: ${error.message}` });
+  }
+}
 
