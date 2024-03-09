@@ -28,7 +28,7 @@ const analyticsSchema = new mongoose.Schema({
     required: true
   },
   totalTimeTaken: {
-    type: Number, //  in minutes
+    type: Number,
     required: true
   },
   totalTimeAllocated: {
