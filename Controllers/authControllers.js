@@ -1,17 +1,16 @@
 const mongoose = require("mongoose");
 const User = require("../DbModels/UserModel");
 const jwt = require("jsonwebtoken");
+const Test = require("../DbModels/TestPaperModel");
 const cookie = require("cookies");
 const cookieParser = require("cookie-parser");
 const DayinMin = 24 * 60 * 60;
 const secret = "Secret1234";
-
 function tokenize(id) {
   return jwt.sign({ id }, secret, {
     expiresIn: 3 * DayinMin,
   });
 }
-
 function HanddleError(err) {
   const returnmessage = {};
   if (err.errors) {
@@ -21,7 +20,6 @@ function HanddleError(err) {
       returnmessage[p.path] = p.message;
     }
   }
-
   if (err.code == 11000) {
     returnmessage["duplicate"] = "This Email is already registered";
   }
@@ -36,11 +34,15 @@ function HanddleError2(err) {
 }
 async function addPublicTestsToUser(userId) {
   try {
-    const publicTests = await Test.find({ access: 'Public' });
-    await User.findByIdAndUpdate(userId, { $addToSet: { eligibleTests: { $each: publicTests.map(test => test._id) } } });
+    const publicTests = await Test.find({ access: "Public" });
+    await User.findByIdAndUpdate(userId, {
+      $addToSet: {
+        eligibleTests: { $each: publicTests.map((test) => test._id) },
+      },
+    });
     return true;
   } catch (error) {
-    console.error('Error adding public tests to user:', error);
+    console.error("Error adding public tests to user:", error);
     return false;
   }
 }
@@ -50,16 +52,14 @@ module.exports.signup = async (req, res) => {
     const user = await User.create(UserDetail);
     const token = tokenize(user._id);
     res.cookie("jwt", token, { httpOnly: true });
-    await addPublicTestsToUser(user._id)
+    const p = await addPublicTestsToUser(user._id);
+    console.log(p);
     res.json({ msg: "You Are Sucessfully Registered" });
   } catch (error) {
-    // const Error =
     const Error = HanddleError(error);
     res.json({ Error });
   }
 };
-
-
 module.exports.login = async (req, res) => {
   const body = req.body;
   const Email = body.Email;
@@ -82,24 +82,22 @@ module.exports.login = async (req, res) => {
 module.exports.logout = async (req, res) => {
   try {
     const token = req.cookies.jwt;
-
     if (!token) {
       return res.status(401).json({ error: "Unauthorized" });
     }
-
     const decoded = jwt.verify(token, secret);
-
     const user = await User.findOneAndUpdate(
       { _id: decoded.id },
       { $set: { LoggedIn: false } },
       { new: true }
     );
-
     if (user) {
       res.cookie("jwt", "", { expires: new Date(0), httpOnly: true });
       return res.json({ message: "Logout successful" });
     } else {
-      return res.status(404).json({ error: "User not found or already logged out" });
+      return res
+        .status(404)
+        .json({ error: "User not found or already logged out" });
     }
   } catch (error) {
     console.error(error);
