@@ -53,7 +53,6 @@ module.exports.signup = async (req, res) => {
     const token = tokenize(user._id);
     res.cookie("jwt", token, { httpOnly: true, Samesite : 'None' });
     const p = await addPublicTestsToUser(user._id);
-    console.log(p);
     res.json({ msg: "You Are Sucessfully Registered" });
   } catch (error) {
     const Error = HanddleError(error);
