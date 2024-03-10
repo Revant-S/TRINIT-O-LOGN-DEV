@@ -30,7 +30,7 @@ OCR Tool: OCR.Space API, Gemini pro API
 
 Authentication: JSON Web Tokens (JWT)
 
-## Demo Video and Progress Google Drive link
+## Demo Video and Progress Video Google Drive link
 
 https://drive.google.com/drive/folders/149N4EaQH_DjVQ3OQn4PBG90ahVzo8_yW
 
