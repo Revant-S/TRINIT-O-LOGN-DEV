@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const requireAuth = require("./Middlewares/authMiddleware");
 const cookies = require("cookie-parser");
 app.use(cookies());
-app.use(cors({ origin: "http://127.0.0.1:5500", credentials: true }));
+app.use(cors({ origin: "http://localhost:8001", credentials: true }));
 async function serverTurnON() {
   await mongoose.connect("mongodb://localhost:27017/testformator");
   console.log("DataBase Is Connected");

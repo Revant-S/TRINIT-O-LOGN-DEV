@@ -32,18 +32,22 @@ const testSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  testTime: {
+    type: Number,
+    required: true,
+  },
   comments: {
-    type : [
-        {
-          userId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
-          },
-          text: String,
+    type: [
+      {
+        userId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
         },
-      ],
-      default: "",
-  }
+        text: String,
+      },
+    ],
+    default: "",
+  },
 });
 
 const Test = mongoose.model("Test", testSchema);

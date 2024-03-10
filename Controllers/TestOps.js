@@ -86,7 +86,7 @@ module.exports.getParticularTest = async (req, res) => {
       return res.status(400).json({ error: "Invalid Test ID" });
     }
     const token = req.cookies.jwt;
-    const decodedToken = jwt.verify(token, secret);
+    const decodedToken = jwt.verify(token, 'your-secret-key'); // Replace with your secret key
     const userId = decodedToken.id;
     if (!userId) {
       return res.status(401).json({ error: "Unauthorized" });
@@ -95,7 +95,12 @@ module.exports.getParticularTest = async (req, res) => {
     if (!isAuthorized) {
       return res.status(403).json({ error: "Unauthorized access to the test" });
     }
-    const test = await Test.findById(testId);
+    const test = await Test.findById(testId)
+      .populate({
+        path: 'comments.userId',
+        select: 'FirstName LastName', // Include only the required fields
+      })
+      .exec();
     if (!test) {
       return res.status(404).json({ error: "Test not found" });
     }
