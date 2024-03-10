@@ -1,4 +1,4 @@
-# TriNIT_Hackkathon_DEV_03
+# TriNIT_Hackathon_DEV_03
 
 ## Test Formatter
 
