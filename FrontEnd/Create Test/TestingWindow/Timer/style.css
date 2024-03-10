@@ -1,0 +1,20 @@
+.countdownTimerContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 3rem;
+  font-family: Digital-7;
+  border: 5px solid rgb(0, 0, 0);
+  padding: 0px 7px;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+}
+#message {
+  transition: 0.5s, opacity 0.25s ease-in-out;
+}
+#message .updateMessage {
+  transition: 0.5s, opacity 0.25s ease-in-out;
+}
+.wrapper {
+  display: flex;
+}

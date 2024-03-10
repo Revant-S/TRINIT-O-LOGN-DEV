@@ -1,0 +1,104 @@
+body{
+    background-color: #e1e7ed;
+}
+.navBar {
+    margin-left: 10px;
+    margin-right: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-image: url(/Home\ Page/BlueBg.jpg);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  border-radius: 5px;
+}
+.navBar img {
+  padding: 25px 30px 0px 10px;
+  width: 40px;
+  height: 40px;
+  justify-content: flex-end;
+}
+.navBar h3 {
+  padding: 15px 10px 0px 30px;
+}
+.bioData {
+  display: flex;
+  flex-direction: row;
+}
+.name p {
+  color: rgb(255, 255, 255);
+  text-shadow: none;
+}
+#container {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+  background-color: white;
+}
+#container input,
+label {
+  margin: 5px 0px 5px 5px;
+}
+.btns{
+    display: flex;
+    justify-content: space-around;
+}
+.btns img{
+    display: flex;
+    width: 30px;
+}
+#container button {
+  margin-top: 25px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(30, 161, 255);
+  color: white;
+  font-size: 1.2rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.449);
+}
+#container button:hover{
+    background-color: rgb(113, 196, 255);
+    cursor: pointer;
+}
+.question {
+  font-family: sans-serif;
+}
+#questionTimer {
+  display: flex;
+  justify-content: space-between;
+}
+#timer {
+  margin: 20px;
+  font-size: 1.5rem;
+}
+#submitBtn{
+    display: none;
+}
+#submitBtn.end{
+    display: block;
+}
+
+.countdownTimerContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 3rem;
+  font-family: Digital-7;
+  border: 5px solid rgb(0, 0, 0);
+  padding: 0px 7px;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+}
+#message {
+  transition: 0.5s, opacity 0.25s ease-in-out;
+}
+#message .updateMessage {
+  transition: 0.5s, opacity 0.25s ease-in-out;
+}

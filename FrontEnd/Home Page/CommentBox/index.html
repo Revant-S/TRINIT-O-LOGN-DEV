@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comment Box</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="discussionPanel">
+      <button id="commentButton">View Comments</button>
+      <div class="container" id="discussionBox">
+        <h2>Discussions</h2>
+        <div id="comments">
+          <div class="comment"></div>
+        </div>
+        <form id="inputField">
+          <textarea
+            placeholder="Write Comment here"
+            id="commentTextArea"
+          ></textarea>
+          <div class="btn">
+            <input type="submit" value="Comment" />
+            <button id="clear" href="#">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="comment.js"></script>
+  </body>
+</html>

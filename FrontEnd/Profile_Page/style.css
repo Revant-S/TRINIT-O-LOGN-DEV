@@ -1,0 +1,113 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px 30px;
+}
+.profile {
+  display: flex;
+  height: 30px;
+}
+.navBar {
+  background-image: url(BlueBG.jpg);
+  padding: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+.menuOptions {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 20px 20px 20px 0px;
+}
+.menuOption {
+  width: 100%;
+  padding: 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px 50px;
+  text-decoration: none;
+  color: black;
+  font-family: verdana;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.113);
+}
+.menuOption:hover {
+  background-color: rgb(46, 125, 242);
+  color: white;
+  cursor: pointer;
+}
+.menuOption img {
+  width: 30px;
+}
+.testOptions {
+  width: 70%;
+  padding: 20px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e1e7ed;
+  text-align: center;
+}
+h3 {
+    font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #33363b;
+}
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  color: #868d9b;
+}
+.card {
+  width: 80%;
+  background-color: #ffffff;
+  margin: 0 auto;
+  margin-top: 25px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+}
+.card_profile_img {
+  width: 120px;
+  height: 120px;
+  background-color: #868d9b;
+  background: url("https://source.unsplash.com/7Sz71zuuW4k");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #ffffff;
+  border-radius: 120px;
+  margin: 0 auto;
+  margin-top: -60px;
+}
+.card_background_img {
+  width: 100%;
+  height: 180px;
+  background-color: #e1e7ed;
+  background: url("https://source.unsplash.com/9wg5jCEPBsw");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.user_details p {
+  margin-bottom: 20px;
+  margin-top: -5px;
+}
+.user_details h3 {
+  margin-top: 10px;
+}
+.card_count {
+  padding: 30px;
+  border-top: 1px solid #dde1e7;
+}
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*:focus{
+    outline: none;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: url(BlueBG.jpg);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.form{
+    width: 400px;
+    text-align: center;
+    font-family: 'roboto','noir';
+}
+.heading{
+    opacity: 0;
+    color: white;
+    text-transform: capitalize;
+    text-shadow: 2px 2px 4px black;
+    text-align: center;
+    font-size: 80px;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+input{
+    opacity: 0;
+    width: 80%;
+    height: 35px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 5px;
+    background: hsla(0, 0%, 100%, 0.236);
+    border: none;
+    color: white;
+    padding: 10px;
+    transition: 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+input::placeholder{
+    color: white;
+}
+input:focus,
+.submitBtn:hover{
+    background: white;
+    color: black;
+}
+.submitBtn{
+    opacity: 0;
+    width: 15%;
+    height: 35px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 5px;
+    background: hsla(0, 0%, 100%, 0.25);
+    border: none;
+    color: white;
+    padding: 10px;
+    transition: 0.5s ease-in-out;
+}
+.submitBtn:active{
+    color: white;
+}
+.link{
+    opacity: 0;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: hsl(0, 0%, 100%);
+    transition: 0.5s ease-in-out;
+}
+.link:hover{
+    color: white;
+}
+.namecontainer{
+    display: flex;
+}
+.firstNameCont{
+    display: flex;
+    flex-direction: column;
+}
+.lastNameCont{
+    display: flex;
+    flex-direction: column;
+}
+.namecontainer input{
+    margin: 5px;
+}
+.agecontainer{
+    display: flex;
+}
+.gender{
+    opacity: 0;
+    width: 80%;
+    margin: 20px auto;
+    height: 35px;
+    display: block;
+    border-radius: 5px;
+    background: hsla(0, 0%, 100%, 0.3);
+    border: none;
+    color: black;
+    -webkit-text-fill-color:white;
+    padding: 10px;
+    transition: 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+.errorMessage{
+    color: red;
+}
+a{
+    text-decoration: none;
+}

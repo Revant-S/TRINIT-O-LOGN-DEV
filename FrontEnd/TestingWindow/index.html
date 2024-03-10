@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing Window</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="navBar">
+      <h3 id="testName"></h3>
+      <div class="bioData">
+        <div class="name">
+          <p>Lassan Patel</p>
+          <p>24</p>
+        </div>
+        <img src="/Home Page/profile.png" />
+      </div>
+    </div>
+    <div id="container">
+      <div class="question">
+        <div id="questionTimer">
+          <h3 id="QNo">Q1.</h3>
+          <div class="countdownTimerContainer">
+            <div class="display" id="time">00:00:00</div>
+          </div>
+        </div>
+        <div id="content">
+          <p>What is the SI unit of electric current?</p>
+          <img src="url" alt="" /><br />
+          <input type="radio" id="Ampere" name="Q1" />
+          <label for="Ampere">Ampere</label><br />
+          <input type="radio" id="Volt" name="Q1" />
+          <label for="Volt">Volt</label><br />
+          <input type="radio" id="Ohm" name="Q1" />
+          <label for="Ohm">Ohm</label><br />
+          <input type="radio" id="Watt" name="Q1" />
+          <label for="Watt">Watt</label><br />
+        </div>
+      </div>
+      <div class="btns">
+        <button id="prevBtn"><img src="arrow-fat-left.png" />Prev</button>
+        <button id="submitBtn" type="submit">Submit</button>
+        <button id="nextBtn"><img src="arrow-fat-right.png" />Next</button>
+      </div>
+    </div>
+    <script src="testing.js" type="module"></script>
+  </body>
+</html>

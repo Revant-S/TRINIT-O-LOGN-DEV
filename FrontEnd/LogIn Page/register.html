@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Page</title>
+    <link rel="stylesheet" href="form.css" />
+  </head>
+  <body>
+    <div class="form">
+      <h1 class="heading">Register</h1>
+      <div class="namecontainer">
+        <div class="firstNameCont">
+            <input
+              type="text"
+              placeholder="first name"
+              autocomplete="off"
+              class="firstName"
+              required
+            />
+            <p class="errorMessage"></p>
+        </div>
+        <div class="lastNameCont">
+            <input
+              type="text"
+              placeholder="last name"
+              autocomplete="off"
+              class="lastName"
+              required
+            />
+            <p class="errorMessage"></p>
+        </div>
+      </div>
+      <div class="agecontainer">
+        <div class="agecont">
+          <input
+            type="number"
+            placeholder="age"
+            autocomplete="off"
+            class="age"
+            required
+            min="0"
+          />
+          <p class="errorMessage"></p>
+        </div>
+        <select name="gender" class="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+        <p class="errorMessage"></p>
+      </div>
+      <input
+        type="number"
+        placeholder="phone number"
+        autocomplete="off"
+        class="mobno"
+        required
+      />
+      <p class="errorMessage"></p>
+      <input
+        type="email"
+        placeholder="email"
+        autocomplete="off"
+        class="email"
+        required
+      />
+      <p class="errorMessage"></p>
+      <input
+        type="password"
+        placeholder="password"
+        autocomplete="off"
+        class="password"
+        required
+      />
+      <p class="errorMessage"></p>
+      <button onclick="validateInput()" class="submitBtn">Submit</button>
+      <a href="login.html" id="loginLink"
+        >Already have an account? Login here</a
+      >
+    </div>
+    <script src="form.js"></script>
+  </body>
+</html>

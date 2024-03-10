@@ -1,0 +1,81 @@
+.discussionPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.discussionPanel.visible {
+  background-color: rgb(30, 30, 29);
+}
+#discussionBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#inputField textarea {
+  outline: none;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  color: rgb(224, 224, 224);
+  margin: 5px;
+  padding: 15px;
+  border-radius: 5px;
+  width: 300px;
+  height: 200px;
+  font-family: sans-serif;
+  box-shadow: 2px 2px 8px black;
+}
+h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(237, 237, 226);
+}
+#inputField textarea:focus {
+  border: none;
+  text-decoration: none;
+}
+.btn {
+  padding: 10px;
+}
+#inputField input,
+#inputField button {
+  padding: 10px;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 5px;
+  background: transparent;
+  color: rgb(224, 224, 224);
+}
+#inputField input:hover {
+  background-color: rgb(57, 57, 55);
+  border: 1px solid white;
+  cursor: pointer;
+}
+#inputField button:hover {
+  background-color: rgb(181, 0, 0);
+}
+#inputField button {
+  float: right;
+}
+#commentButton {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  background-color: rgb(0, 99, 0);
+}
+#commentButton:hover {
+  background-color: rgb(0, 164, 0);
+  cursor: pointer;
+}
+#discussionBox {
+  display: none;
+}
+#discussionBox.visible {
+  display: flex;
+}
+#comments {
+  margin: 0px 20px 10px 20px;
+  color: rgb(224, 224, 224);
+  font-family: sans-serif;
+}

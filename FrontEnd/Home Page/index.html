@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="navBar">
+      <a href="../Profile_Page/index.html"
+        ><img src="profile.png" class="profile"
+      /></a>
+    </div>
+    <div class="container">
+      <div class="menuOptions">
+        <a href="../Home Page/index.html" class="menuOption">
+          <img class="icons" src="home.png" />
+          Home Page
+        </a>
+        <a href="../Create Test/index.html" class="menuOption">
+          <img class="icons" src="test.png" />
+          Create Test
+        </a>
+        <a href="../Test Report/index.html" class="menuOption">
+          <img class="icons" src="report.png" />
+          Test Report
+        </a>
+      </div>
+      <div class="testOptions">
+        <div class="cardContainer">
+          <div class="testCard">
+            <img src="exam-paper.png" />
+            TestCard-1
+            <a href="../TestingWindow/index.html" target="_blank"
+              ><button id="joinTest">Join</button></a
+            >
+          </div>
+          <button id="upBtn">
+            <img src="like.png" />
+            Upvote
+          </button>
+          <div class="discussionPanel">
+            <button id="commentButton">View Comments</button>
+            <div class="container" id="discussionBox">
+              <h2>Discussions</h2>
+              <div id="comments">
+                <div class="comment"></div>
+              </div>
+              <form id="inputField">
+                <textarea
+                  placeholder="Write Comment here"
+                  id="commentTextArea"
+                ></textarea>
+                <div class="btn">
+                  <input type="submit" value="Comment" />
+                  <button id="clear" href="#">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="home.js"></script>
+  </body>
+</html>

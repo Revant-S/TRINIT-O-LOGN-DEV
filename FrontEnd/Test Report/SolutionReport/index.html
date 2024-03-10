@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Test</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="navBar">
+      <a href="/Profile_Page/index.html"
+        ><img src="../profile.png" class="profile"
+      /></a>
+    </div>
+    <div class="container">
+        <div class="menuOptions">
+          <a href="/Home Page/index.html" class="menuOption">
+            <img class="icons" src="../home.png">
+            Home Page
+        </a>
+          <a href="/Create Test/index.html" class="menuOption">
+            <img class="icons" src="../test.png">
+            Create Test
+        </a>
+          <a href="/Test Report/index.html" class="menuOption">
+            <img class="icons" src="../report.png">
+            Test Report
+        </a>
+        </div>
+        <div class="innerNavbar">
+            <div id="nav">
+              <a href="../index.html" class="menuLink" id="scoreCard" >Score Card</a>
+              <a href="../SolutionReport/index.html" class="menuLink" id="reportCard" >Solution Report</a>
+              <a href="../CompareYourself/index.html" class="menuLink" id="compareCard">Compare Yourself</a>
+              <a href="../MyTest/index.html" class="menuLink" id="testCard">My Test</a>
+            </div>
+            <div class="questionStat">
+              <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        <script src="../score.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Test</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="navBar">
+      <a href="../Profile_Page/index.html"
+        ><img src="profile.png" class="profile"
+      /></a>
+    </div>
+    <div class="container">
+      <div class="menuOptions">
+        <a href="../Home Page/index.html" class="menuOption">
+          <img class="icons" src="home.png" />
+          Home Page
+        </a>
+        <a href="../Create Test/index.html" class="menuOption">
+          <img class="icons" src="test.png" />
+          Create Test
+        </a>
+        <a href="../Test Report/index.html" class="menuOption">
+          <img class="icons" src="report.png" />
+          Test Report
+        </a>
+      </div>
+      <div class="fileOptions">
+        <div class="fileOption">
+          <input type="file" id="QuestionPaper" class="file" />
+          <label for="QuestionPaper">Select a Question Paper</label>
+          <p class="fileName" id="QfileName"></p>
+        </div>
+        <div class="fileOption">
+          <input type="file" id="AnswerKey" class="file" />
+          <label for="AnswerKey">Select an Answer key</label>
+          <p class="fileName" id="AfileName"></p>
+        </div>
+        <a href="/Home Page/index.html">
+          <button id="btn" type="submit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Create Test
+          </button>
+        </a>
+      </div>
+    </div>
+    <script src="test.js"></script>
+  </body>
+</html>
