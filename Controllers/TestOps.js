@@ -35,11 +35,12 @@ module.exports.createTest = async (req, res) => {
   const token = req.cookies.jwt;
   const decodedToken = jwt.verify(token, secret);
   const userId = decodedToken.id;
+  
   try {
     const document = await Test.create(body);
     if (document.access === "Public") {
       const given = await giveTestToAll(document);
-      resObj = given;
+      resObj.given = "given";
     } else {
       await User.updateOne(
         { _id: userId },
