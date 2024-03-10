@@ -21,9 +21,13 @@ https://github.com/Revant-S/TRINIT-O-LOGN-DEV.git
 ## Technologies Used
 
 Frontend: HTML, CSS
+
 Backend: Node.js, Express
+
 Database: MongoDB
+
 OCR Tool: OCR.Space API, Gemini pro API
+
 Authentication: JSON Web Tokens (JWT)
 
 
