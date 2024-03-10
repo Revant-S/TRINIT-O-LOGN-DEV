@@ -8,9 +8,9 @@ const mongoose = require("mongoose");
 const requireAuth = require("./Middlewares/authMiddleware");
 const cookies = require("cookie-parser");
 app.use(cookies());
-app.use(cors({ origin: "http://localhost:8001", credentials: true }));
+app.use(cors());
 async function serverTurnON() {
-  await mongoose.connect("mongodb://localhost:27017/testformator");
+  await mongoose.connect("MONGODB CONNECTION STRING");
   console.log("DataBase Is Connected");
   app.listen(3000, function () {
     console.log("Server is activated");
