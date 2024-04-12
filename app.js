@@ -10,7 +10,7 @@ const cookies = require("cookie-parser");
 app.use(cookies());
 app.use(cors());
 async function serverTurnON() {
-  await mongoose.connect("MONGODB CONNECTION STRING");
+  await mongoose.connect("mongodb://localhost:27017/");
   console.log("DataBase Is Connected");
   app.listen(3000, function () {
     console.log("Server is activated");
